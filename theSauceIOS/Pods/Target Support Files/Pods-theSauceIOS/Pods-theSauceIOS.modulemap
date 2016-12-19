@@ -1,0 +1,6 @@
+framework module Pods_theSauceIOS {
+  umbrella header "Pods-theSauceIOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

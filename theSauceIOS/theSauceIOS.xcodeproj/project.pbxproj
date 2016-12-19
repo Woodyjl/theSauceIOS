@@ -14,6 +14,8 @@
 		EC474E1D1E07098D00B38ADD /* FSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC474E1C1E07098D00B38ADD /* FSignUpViewController.swift */; };
 		EC474E201E072CC000B38ADD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC474E1F1E072CC000B38ADD /* HomeViewController.swift */; };
 		EC474E221E07992E00B38ADD /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC474E211E07992E00B38ADD /* NewsFeedViewController.swift */; };
+		EC474E241E08241E00B38ADD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC474E231E08241E00B38ADD /* ProfileViewController.swift */; };
+		EC474E261E08456B00B38ADD /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC474E251E08456B00B38ADD /* Post.swift */; };
 		ECD4DB6D1E06CAFA00BBFF99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD4DB6C1E06CAFA00BBFF99 /* AppDelegate.swift */; };
 		ECD4DB721E06CAFA00BBFF99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECD4DB701E06CAFA00BBFF99 /* Main.storyboard */; };
 		ECD4DB741E06CAFA00BBFF99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECD4DB731E06CAFA00BBFF99 /* Assets.xcassets */; };
@@ -56,6 +58,8 @@
 		EC474E1E1E07244900B38ADD /* theSauceIOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = theSauceIOS.entitlements; sourceTree = "<group>"; };
 		EC474E1F1E072CC000B38ADD /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		EC474E211E07992E00B38ADD /* NewsFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
+		EC474E231E08241E00B38ADD /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		EC474E251E08456B00B38ADD /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		ECD4DB691E06CAFA00BBFF99 /* theSauceIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = theSauceIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECD4DB6C1E06CAFA00BBFF99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECD4DB711E06CAFA00BBFF99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -149,6 +153,7 @@
 				EC474E1E1E07244900B38ADD /* theSauceIOS.entitlements */,
 				ECD4DB6C1E06CAFA00BBFF99 /* AppDelegate.swift */,
 				ECD4DB701E06CAFA00BBFF99 /* Main.storyboard */,
+				EC474E251E08456B00B38ADD /* Post.swift */,
 				ECD4DB731E06CAFA00BBFF99 /* Assets.xcassets */,
 				ECD4DB751E06CAFA00BBFF99 /* LaunchScreen.storyboard */,
 				EC474E1C1E07098D00B38ADD /* FSignUpViewController.swift */,
@@ -157,6 +162,7 @@
 				EC15F1161E06DA39001315B1 /* GoogleService-Info.plist */,
 				EC474E1F1E072CC000B38ADD /* HomeViewController.swift */,
 				EC474E211E07992E00B38ADD /* NewsFeedViewController.swift */,
+				EC474E231E08241E00B38ADD /* ProfileViewController.swift */,
 			);
 			path = theSauceIOS;
 			sourceTree = "<group>";
@@ -469,10 +475,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC474E241E08241E00B38ADD /* ProfileViewController.swift in Sources */,
 				EC474E1B1E07098500B38ADD /* FLoginViewController.swift in Sources */,
 				EC474E1D1E07098D00B38ADD /* FSignUpViewController.swift in Sources */,
 				ECD4DB6D1E06CAFA00BBFF99 /* AppDelegate.swift in Sources */,
 				EC474E201E072CC000B38ADD /* HomeViewController.swift in Sources */,
+				EC474E261E08456B00B38ADD /* Post.swift in Sources */,
 				EC474E221E07992E00B38ADD /* NewsFeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

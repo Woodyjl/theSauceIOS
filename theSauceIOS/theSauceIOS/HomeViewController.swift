@@ -29,11 +29,17 @@ class HomeViewController: UIViewController, UITabBarDelegate {
         }
     }
     
+    let newsFeedCon = NewsFeedViewController()
+    let profileCon = ProfileViewController()
+    
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        print("TabBar tag: \(item.tag)")
         switch item.tag {
         case 0:
+            self.view.insertSubview(newsFeedCon.tableView, belowSubview: self.tabBar)
             break
         case 1:
+            self.view.insertSubview(profileCon.view, belowSubview: self.tabBar)
             break
         default:
             break
@@ -42,6 +48,11 @@ class HomeViewController: UIViewController, UITabBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBar.delegate = self
+        let firstTabBarItem = (tabBar.items?[0])!
+        tabBar.selectedItem = firstTabBarItem
+        tabBar(tabBar, didSelect: firstTabBarItem)
+        
         
     }
 

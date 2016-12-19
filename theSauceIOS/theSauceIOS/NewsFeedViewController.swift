@@ -11,10 +11,18 @@ import FirebaseDatabase
 import FirebaseStorage
 
 class NewsFeedViewController: UITableViewController {
+    
+    init() {
+        super.init(style: UITableViewStyle.plain)
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 
     override func didReceiveMemoryWarning() {

@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if user != nil {
                 print("In the state did change listener")
                 print("Will instantiate HomeViewController")
-                self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
+                self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "NavHomeViewController")
             } else {
                 print("In the state did change listener")
                 print("Will instantiate LoginViewController")
@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // ...
             print( "In the single checker")
             print("Will instantiate HomeViewController")
-            self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
+            self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "NavHomeViewController")
             
         } else {
             // No user is signed in.

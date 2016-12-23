@@ -12,14 +12,29 @@ private let reuseIdentifier = "Cell"
 
 class ProfileViewController: UICollectionViewController {
     
+    
+    func logout() {
+        //        let firebaseAuth = FIRAuth.auth()
+        //        do {
+        //            try firebaseAuth?.signOut()
+        //        } catch let signOutError as NSError {
+        //            print ("Error signing out: %@", signOutError)
+        //        }
+        print("works")
+    }
+    
+    //let helperVC: homeVCAidDelegate
+    
     init() {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 100, height: 100)
         super.init(collectionViewLayout: layout)
+        //delegate: homeVCAidDelegate
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        //fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
 
     override func viewDidLoad() {
@@ -28,12 +43,15 @@ class ProfileViewController: UICollectionViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        // Register cell classes
+        // Register cell classes navigationController?.
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
         
         self.view.backgroundColor = UIColor.brown
+        
+        let logoutButton = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: Selector("logout"))
+        self.navigationItem.rightBarButtonItem = logoutButton
     }
 
     override func didReceiveMemoryWarning() {

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CB8FC4F02F69C3E87D4DC0CA /* Pods_theSauceIOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C675A116B4294C0A7F102287 /* Pods_theSauceIOSTests.framework */; };
 		D6702A71B328C226E6752D29 /* Pods_theSauceIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BECD8AB9D46AA967E2F0DE96 /* Pods_theSauceIOS.framework */; };
+		EC0C4AD01E0CD17B00DF3D4B /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0C4ACF1E0CD17B00DF3D4B /* TableViewController.swift */; };
 		EC15F1171E06DA39001315B1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC15F1161E06DA39001315B1 /* GoogleService-Info.plist */; };
 		EC474E1B1E07098500B38ADD /* FLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC474E1A1E07098500B38ADD /* FLoginViewController.swift */; };
 		EC474E1D1E07098D00B38ADD /* FSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC474E1C1E07098D00B38ADD /* FSignUpViewController.swift */; };
@@ -16,6 +17,7 @@
 		EC474E221E07992E00B38ADD /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC474E211E07992E00B38ADD /* NewsFeedViewController.swift */; };
 		EC474E241E08241E00B38ADD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC474E231E08241E00B38ADD /* ProfileViewController.swift */; };
 		EC474E261E08456B00B38ADD /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC474E251E08456B00B38ADD /* Post.swift */; };
+		EC474E281E0A7DAB00B38ADD /* NewsFeedPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC474E271E0A7DAB00B38ADD /* NewsFeedPostCell.swift */; };
 		ECD4DB6D1E06CAFA00BBFF99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD4DB6C1E06CAFA00BBFF99 /* AppDelegate.swift */; };
 		ECD4DB721E06CAFA00BBFF99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECD4DB701E06CAFA00BBFF99 /* Main.storyboard */; };
 		ECD4DB741E06CAFA00BBFF99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECD4DB731E06CAFA00BBFF99 /* Assets.xcassets */; };
@@ -52,6 +54,7 @@
 		C675A116B4294C0A7F102287 /* Pods_theSauceIOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_theSauceIOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFC2317A27F2164A9CB888D1 /* Pods-theSauceIOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theSauceIOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-theSauceIOSTests/Pods-theSauceIOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		E0660F51B91EAE00B06806A5 /* Pods-theSauceIOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theSauceIOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-theSauceIOSTests/Pods-theSauceIOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EC0C4ACF1E0CD17B00DF3D4B /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		EC15F1161E06DA39001315B1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EC474E1A1E07098500B38ADD /* FLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FLoginViewController.swift; path = ../../../ChubbyHubby/ChubbyHubbyPractice/ChubbyHubbyPractice/FLoginViewController.swift; sourceTree = "<group>"; };
 		EC474E1C1E07098D00B38ADD /* FSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FSignUpViewController.swift; path = ../../../ChubbyHubby/ChubbyHubbyPractice/ChubbyHubbyPractice/FSignUpViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +63,7 @@
 		EC474E211E07992E00B38ADD /* NewsFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
 		EC474E231E08241E00B38ADD /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		EC474E251E08456B00B38ADD /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		EC474E271E0A7DAB00B38ADD /* NewsFeedPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedPostCell.swift; sourceTree = "<group>"; };
 		ECD4DB691E06CAFA00BBFF99 /* theSauceIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = theSauceIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECD4DB6C1E06CAFA00BBFF99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECD4DB711E06CAFA00BBFF99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -153,16 +157,18 @@
 				EC474E1E1E07244900B38ADD /* theSauceIOS.entitlements */,
 				ECD4DB6C1E06CAFA00BBFF99 /* AppDelegate.swift */,
 				ECD4DB701E06CAFA00BBFF99 /* Main.storyboard */,
-				EC474E251E08456B00B38ADD /* Post.swift */,
 				ECD4DB731E06CAFA00BBFF99 /* Assets.xcassets */,
 				ECD4DB751E06CAFA00BBFF99 /* LaunchScreen.storyboard */,
 				EC474E1C1E07098D00B38ADD /* FSignUpViewController.swift */,
 				EC474E1A1E07098500B38ADD /* FLoginViewController.swift */,
 				ECD4DB781E06CAFA00BBFF99 /* Info.plist */,
 				EC15F1161E06DA39001315B1 /* GoogleService-Info.plist */,
+				EC474E251E08456B00B38ADD /* Post.swift */,
 				EC474E1F1E072CC000B38ADD /* HomeViewController.swift */,
 				EC474E211E07992E00B38ADD /* NewsFeedViewController.swift */,
 				EC474E231E08241E00B38ADD /* ProfileViewController.swift */,
+				EC474E271E0A7DAB00B38ADD /* NewsFeedPostCell.swift */,
+				EC0C4ACF1E0CD17B00DF3D4B /* TableViewController.swift */,
 			);
 			path = theSauceIOS;
 			sourceTree = "<group>";
@@ -475,12 +481,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC474E281E0A7DAB00B38ADD /* NewsFeedPostCell.swift in Sources */,
 				EC474E241E08241E00B38ADD /* ProfileViewController.swift in Sources */,
 				EC474E1B1E07098500B38ADD /* FLoginViewController.swift in Sources */,
 				EC474E1D1E07098D00B38ADD /* FSignUpViewController.swift in Sources */,
 				ECD4DB6D1E06CAFA00BBFF99 /* AppDelegate.swift in Sources */,
 				EC474E201E072CC000B38ADD /* HomeViewController.swift in Sources */,
 				EC474E261E08456B00B38ADD /* Post.swift in Sources */,
+				EC0C4AD01E0CD17B00DF3D4B /* TableViewController.swift in Sources */,
 				EC474E221E07992E00B38ADD /* NewsFeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

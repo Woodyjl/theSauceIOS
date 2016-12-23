@@ -8,8 +8,9 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
-class HomeViewController: UIViewController, UITabBarDelegate {
+class HomeViewController: UITabBarController, homeVCAidDelegate {
     
     
     lazy var fbUser: FIRUser? = {
@@ -17,42 +18,14 @@ class HomeViewController: UIViewController, UITabBarDelegate {
         return lazilyRetrievedUser
     }()
     
-    @IBOutlet weak var tabBar: UITabBar!
+    var newsFeedCon: NewsFeedViewController? //= NewsFeedViewController()
+    var profileCon: ProfileViewController? //= ProfileViewController()
+    var previouslySelectedView: Int?
     
-    
-    @IBAction func logoutButton(_ sender: UIBarButtonItem) {
-        let firebaseAuth = FIRAuth.auth()
-        do {
-            try firebaseAuth?.signOut()
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
-    }
-    
-    let newsFeedCon = NewsFeedViewController()
-    let profileCon = ProfileViewController()
-    
-    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        print("TabBar tag: \(item.tag)")
-        switch item.tag {
-        case 0:
-            self.view.insertSubview(newsFeedCon.tableView, belowSubview: self.tabBar)
-            break
-        case 1:
-            self.view.insertSubview(profileCon.view, belowSubview: self.tabBar)
-            break
-        default:
-            break
-        }
-    }
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBar.delegate = self
-        let firstTabBarItem = (tabBar.items?[0])!
-        tabBar.selectedItem = firstTabBarItem
-        tabBar(tabBar, didSelect: firstTabBarItem)
-        
         
     }
 
@@ -71,5 +44,15 @@ class HomeViewController: UIViewController, UITabBarDelegate {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func getUser() -> FIRUser? {
+        return fbUser
+    }
 
+}
+
+//This protocol will be implemented by the homeViewController in order to help
+//other view controllers
+protocol homeVCAidDelegate {
+    func getUser() -> FIRUser?
 }

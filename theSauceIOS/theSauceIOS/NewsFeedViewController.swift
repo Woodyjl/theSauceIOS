@@ -82,10 +82,13 @@ class NewsFeedViewController: UITableViewController {
                 
             }
             list.sort(by: { (p1: Post, p2: Post) -> Bool in
-                return p1.name! < p2.name!
+                return p1.name! > p2.name!
             })
             
             print(list.debugDescription)
+            for q in list {
+                print(q.name)
+            }
             
             //weakSelf?.arrayOfListOfPost.insert(list, at: 0)
             weakSelf?.listOfPost.append(contentsOf: list)

@@ -11,13 +11,13 @@ import FirebaseDatabase
 
 class ProfileViewController: UICollectionViewController {
     
-    var arrayOflistOfPosts = [Array<Post>]() {
+    var listOfPosts = Array<Post>() {
         didSet {
             self.collectionView?.reloadData()
         }
     }
     
-    var userInfo = NSDictionary() {
+    var userInfo: NSDictionary? {
         didSet {
             fetchlatestPost()
         }
@@ -90,9 +90,9 @@ class ProfileViewController: UICollectionViewController {
         if let helper = self.helper {
             let databaseRef = FIRDatabase.database()
             
-            let postRef = databaseRef.reference().child("Post").child((helper.getUser())!.uid)
+            let postRef = databaseRef.reference().child("Post").child("8dKIKjbLBRXur7cHaAVBtja2Dd32")//(helper.getUser())!.uid)
             
-            if arrayOflistOfPosts.isEmpty {
+            if listOfPosts.isEmpty {
                 postRef.observeSingleEvent(of: .value, with: { [weak weakSelf = self] (snapshot) in
                     var list = Array<Post>()
                     let enumerator = snapshot.children
@@ -120,12 +120,12 @@ class ProfileViewController: UICollectionViewController {
                         
                     }
                     list.sort(by: { (p1: Post, p2: Post) -> Bool in
-                        return p1.name! < p2.name!
+                        return p1.name! > p2.name!
                     })
                     
                     print(list.debugDescription)
                     
-                    weakSelf?.arrayOflistOfPosts.insert(list, at: 0)
+                    weakSelf?.listOfPosts.append(contentsOf: list)  //insert(list, at: 0)
                     })
 
             } else {
@@ -159,12 +159,13 @@ class ProfileViewController: UICollectionViewController {
                         
                     }
                     list.sort(by: { (p1: Post, p2: Post) -> Bool in
-                        return p1.name! < p2.name!
+                        return p1.name! > p2.name!
                     })
                     
                     print(list.debugDescription)
-                    
-                    weakSelf?.arrayOflistOfPosts.insert(list, at: 0)
+                    while !list.isEmpty {
+                        weakSelf?.listOfPosts.insert(list.popLast()!, at: 0)
+                    }
                 })
             }
         }
@@ -181,7 +182,7 @@ class ProfileViewController: UICollectionViewController {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return arrayOflistOfPosts.count
+        return 1
     }
     
     override func collectionView(_ collectionView: UICollectionView,
@@ -207,7 +208,7 @@ class ProfileViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return arrayOflistOfPosts[section].count
+        return listOfPosts.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -215,7 +216,7 @@ class ProfileViewController: UICollectionViewController {
     
         // Configure the cell
         
-        cell?.post = arrayOflistOfPosts[indexPath.section][indexPath.row]
+        cell?.post = listOfPosts[indexPath.row]
     
         return cell!
     }

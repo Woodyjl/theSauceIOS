@@ -10,6 +10,7 @@
 		CB8FC4F02F69C3E87D4DC0CA /* Pods_theSauceIOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C675A116B4294C0A7F102287 /* Pods_theSauceIOSTests.framework */; };
 		D6702A71B328C226E6752D29 /* Pods_theSauceIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BECD8AB9D46AA967E2F0DE96 /* Pods_theSauceIOS.framework */; };
 		EC0C4AD01E0CD17B00DF3D4B /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0C4ACF1E0CD17B00DF3D4B /* TableViewController.swift */; };
+		EC0C4AD21E0DF6C400DF3D4B /* ProfileGalleryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0C4AD11E0DF6C400DF3D4B /* ProfileGalleryViewCell.swift */; };
 		EC15F1171E06DA39001315B1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC15F1161E06DA39001315B1 /* GoogleService-Info.plist */; };
 		EC474E1B1E07098500B38ADD /* FLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC474E1A1E07098500B38ADD /* FLoginViewController.swift */; };
 		EC474E1D1E07098D00B38ADD /* FSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC474E1C1E07098D00B38ADD /* FSignUpViewController.swift */; };
@@ -55,6 +56,7 @@
 		CFC2317A27F2164A9CB888D1 /* Pods-theSauceIOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theSauceIOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-theSauceIOSTests/Pods-theSauceIOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		E0660F51B91EAE00B06806A5 /* Pods-theSauceIOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theSauceIOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-theSauceIOSTests/Pods-theSauceIOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EC0C4ACF1E0CD17B00DF3D4B /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		EC0C4AD11E0DF6C400DF3D4B /* ProfileGalleryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileGalleryViewCell.swift; sourceTree = "<group>"; };
 		EC15F1161E06DA39001315B1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EC474E1A1E07098500B38ADD /* FLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FLoginViewController.swift; path = ../../../ChubbyHubby/ChubbyHubbyPractice/ChubbyHubbyPractice/FLoginViewController.swift; sourceTree = "<group>"; };
 		EC474E1C1E07098D00B38ADD /* FSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FSignUpViewController.swift; path = ../../../ChubbyHubby/ChubbyHubbyPractice/ChubbyHubbyPractice/FSignUpViewController.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				EC474E231E08241E00B38ADD /* ProfileViewController.swift */,
 				EC474E271E0A7DAB00B38ADD /* NewsFeedPostCell.swift */,
 				EC0C4ACF1E0CD17B00DF3D4B /* TableViewController.swift */,
+				EC0C4AD11E0DF6C400DF3D4B /* ProfileGalleryViewCell.swift */,
 			);
 			path = theSauceIOS;
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC474E281E0A7DAB00B38ADD /* NewsFeedPostCell.swift in Sources */,
+				EC0C4AD21E0DF6C400DF3D4B /* ProfileGalleryViewCell.swift in Sources */,
 				EC474E241E08241E00B38ADD /* ProfileViewController.swift in Sources */,
 				EC474E1B1E07098500B38ADD /* FLoginViewController.swift in Sources */,
 				EC474E1D1E07098D00B38ADD /* FSignUpViewController.swift in Sources */,

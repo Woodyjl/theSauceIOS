@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "0B907136C0AA24BF313BAA0CF2E571222E5ECE87",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "0F759E4C187C0610D6231DA4E038D907BD2F3BE4" : 9223372036854775807,
+    "0B907136C0AA24BF313BAA0CF2E571222E5ECE87" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "AB2DFC7F-3CCD-4871-A76E-1F71E687E29E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "0F759E4C187C0610D6231DA4E038D907BD2F3BE4" : "ChubbyHubby\/",
+    "0B907136C0AA24BF313BAA0CF2E571222E5ECE87" : "theSauceIos\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "theSauceIOS",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "theSauceIOS\/theSauceIOS.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Woodyjl\/theSauceIOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0B907136C0AA24BF313BAA0CF2E571222E5ECE87"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Woodyjl\/ChubbyHubby.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0F759E4C187C0610D6231DA4E038D907BD2F3BE4"
+    }
+  ]
+}

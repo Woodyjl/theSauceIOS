@@ -118,64 +118,100 @@
             </objects>
             <point key="canvasLocation" x="2905" y="26"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="bcK-fa-hAz">
-            <objects>
-                <viewController id="xnW-I8-OdE" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="0RE-E0-9Sq"/>
-                        <viewControllerLayoutGuide type="bottom" id="Hgz-35-xTL"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="9wN-32-S9d">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QCb-6z-V2G" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProfileGalleryPostCell" id="aAI-rD-4dw">
-                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                </collectionViewCell>
-                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProfileHeaderCell" id="dCf-pV-Za3">
-                    <rect key="frame" x="0.0" y="0.0" width="342" height="103"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                        <rect key="frame" x="0.0" y="0.0" width="342" height="103"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                    <size key="customSize" width="342" height="50"/>
-                </collectionViewCell>
-            </objects>
-            <point key="canvasLocation" x="6240.8000000000002" y="25.637181409295355"/>
-        </scene>
         <!--Profile View Controller-->
-        <scene sceneID="W9L-Qd-vgt">
+        <scene sceneID="hl9-qW-DCb">
             <objects>
-                <viewController id="n01-28-TTa" customClass="ProfileViewController" customModule="theSauceIOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="cBv-49-DzU"/>
-                        <viewControllerLayoutGuide type="bottom" id="7qb-Mc-lrs"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="5dF-dz-Hjf">
+                <collectionViewController id="bmj-Xj-vM9" customClass="ProfileViewController" customModule="theSauceIOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="zXJ-9h-BfK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="s69-yC-Fkk"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Dzh-xA-xtD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BL5-0z-vGI">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="50" height="150"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProfileGalleryPostCell" id="aAI-rD-4dw" customClass="ProfileGalleryViewCell" customModule="theSauceIOS" customModuleProvider="target">
+                                <rect key="frame" x="125" y="150" width="125" height="125"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bhC-bl-kKQ">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="125" id="Gm9-W6-PZE"/>
+                                                <constraint firstAttribute="height" constant="125" id="epV-B5-99p"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="bhC-bl-kKQ" firstAttribute="leading" secondItem="aAI-rD-4dw" secondAttribute="leading" id="EPe-PL-cdx"/>
+                                    <constraint firstItem="bhC-bl-kKQ" firstAttribute="top" secondItem="aAI-rD-4dw" secondAttribute="top" id="i5z-yA-WQr"/>
+                                </constraints>
+                                <size key="customSize" width="125" height="125"/>
+                                <connections>
+                                    <outlet property="postImageView" destination="bhC-bl-kKQ" id="4VU-J4-XrG"/>
+                                </connections>
+                            </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProfileHeaderCell" id="dCf-pV-Za3">
+                                <rect key="frame" x="17" y="285" width="342" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                                <size key="customSize" width="342" height="50"/>
+                            </collectionViewCell>
+                        </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProfileHeaderCell" id="bfH-Di-ZDQ" customClass="ProfileHeaderViewCell" customModule="theSauceIOS" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="XSI-LN-wUE">
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="750" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vea-Ah-lBv">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="100" id="mN6-dr-XJi"/>
+                                                <constraint firstAttribute="width" constant="100" id="xwq-qU-Hci"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDG-YR-zva">
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="leadingMargin" secondItem="XSI-LN-wUE" secondAttribute="leading" id="6th-yM-Vk9"/>
+                                <constraint firstAttribute="trailingMargin" secondItem="XSI-LN-wUE" secondAttribute="trailing" id="EFe-6S-QJQ"/>
+                                <constraint firstAttribute="topMargin" secondItem="XSI-LN-wUE" secondAttribute="top" id="n7m-PW-1XH"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="profileImageView" destination="Vea-Ah-lBv" id="l6T-RF-md9"/>
+                                <outlet property="userName" destination="cDG-YR-zva" id="65y-VR-05u"/>
+                            </connections>
+                        </collectionReusableView>
+                        <connections>
+                            <outlet property="dataSource" destination="bmj-Xj-vM9" id="cdF-Pp-CDK"/>
+                            <outlet property="delegate" destination="bmj-Xj-vM9" id="zWJ-h3-Xxo"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="Vxg-lu-AzM"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OTz-4Y-4kc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5540" y="1230.1349325337333"/>
+            <point key="canvasLocation" x="5513" y="1229"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Home View Controller-->
         <scene sceneID="QGg-ua-B9K">
             <objects>
-                <tabBarController id="e1C-l6-F18" sceneMemberID="viewController">
+                <tabBarController id="e1C-l6-F18" customClass="HomeViewController" customModule="theSauceIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="AR4-xs-SKg"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="rT9-az-63k">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -254,7 +290,7 @@
                                                         <constraint firstAttribute="trailing" secondItem="UdA-WH-ofi" secondAttribute="trailing" id="4Ha-b2-grD"/>
                                                     </constraints>
                                                 </stackView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vtX-B0-VeG">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vtX-B0-VeG">
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -442,7 +478,7 @@
         <scene sceneID="siQ-TT-0oV">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5pb-u0-1yi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="oJw-md-S8R"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Profile" id="oJw-md-S8R"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dPY-Te-Es2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -450,7 +486,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="n01-28-TTa" kind="relationship" relationship="rootViewController" id="dSR-cd-k2Q"/>
+                        <segue destination="bmj-Xj-vM9" kind="relationship" relationship="rootViewController" id="syU-SW-gxH"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VTV-q8-I9M" userLabel="First Responder" sceneMemberID="firstResponder"/>

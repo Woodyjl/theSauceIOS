@@ -20,7 +20,9 @@ class HomeViewController: UITabBarController, homeVCAidDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let navCon = self.viewControllers?[0] as? UINavigationController
+        let destinationVC = navCon?.getRoot() as? NewsFeedViewController
+        destinationVC?.helper = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,6 +46,9 @@ class HomeViewController: UITabBarController, homeVCAidDelegate {
         print(item.tag)
         switch item.tag {
         case 0:
+            let navCon = self.viewControllers?[item.tag] as? UINavigationController
+            let destinationVC = navCon?.getRoot() as? NewsFeedViewController
+            destinationVC?.helper = self
             break
         case 1:
             let navCon = self.viewControllers?[item.tag] as? UINavigationController
@@ -59,6 +64,10 @@ class HomeViewController: UITabBarController, homeVCAidDelegate {
     func getUser() -> FIRUser? {
         return fbUser
     }
+    
+    func tabBarIs(hidden: Bool) {
+        tabBar.isHidden = hidden
+    }
 
 }
 
@@ -66,6 +75,8 @@ class HomeViewController: UITabBarController, homeVCAidDelegate {
 //other view controllers
 protocol homeVCAidDelegate {
     func getUser() -> FIRUser?
+    
+    func tabBarIs(hidden: Bool)
 }
 
 

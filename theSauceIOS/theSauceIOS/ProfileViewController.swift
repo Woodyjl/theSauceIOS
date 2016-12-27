@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
 
 class ProfileViewController: UICollectionViewController {
     
@@ -17,7 +18,7 @@ class ProfileViewController: UICollectionViewController {
         }
     }
     
-    var userInfo: NSDictionary? {
+    var userInfo: NSMutableDictionary? {
         didSet {
             fetchlatestPost()
         }
@@ -27,30 +28,15 @@ class ProfileViewController: UICollectionViewController {
     
     
     func logout() {
-        //        let firebaseAuth = FIRAuth.auth()
-        //        do {
-        //            try firebaseAuth?.signOut()
-        //        } catch let signOutError as NSError {
-        //            print ("Error signing out: %@", signOutError)
-        //        }
-        print("works")
+                let firebaseAuth = FIRAuth.auth()
+                do {
+                    try firebaseAuth?.signOut()
+                } catch let signOutError as NSError {
+                    print ("Error signing out: %@", signOutError)
+                }
     }
     
-    //let helperVC: homeVCAidDelegate
-    
-//    init() {
-//        let layout = UICollectionViewFlowLayout()
-//        layout.itemSize = CGSize(width: 100, height: 100)
-//        super.init(collectionViewLayout: layout)
-//        //delegate: homeVCAidDelegate
-//    }
-    
-//    required init?(coder aDecoder: NSCoder) {
-//        //fatalError("init(coder:) has not been implemented")
-//        super.init(coder: aDecoder)
-//    }
-
-    override func viewDidLoad() {
+        override func viewDidLoad() {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
@@ -75,9 +61,10 @@ class ProfileViewController: UICollectionViewController {
             let postRef = databaseRef.reference().child("userProfileInfo").child((helper.getUser())!.uid)
             
             postRef.observeSingleEvent(of: .value, with: { [unowned UOSelf = self] (snapshot) in
-                if let data = snapshot.value as? NSDictionary {
+                if let data = snapshot.value as? NSMutableDictionary {
                     print(data.debugDescription)
-                    
+                    data["uId"] = UOSelf.helper?.getUser()?.uid
+                    print(data.debugDescription)
                     UOSelf.userInfo = data
                 }
             })
@@ -85,12 +72,13 @@ class ProfileViewController: UICollectionViewController {
 
     }
     
+    //"8dKIKjbLBRXur7cHaAVBtja2Dd32")
     private func fetchlatestPost() {
         
         if let helper = self.helper {
             let databaseRef = FIRDatabase.database()
             
-            let postRef = databaseRef.reference().child("Post").child("8dKIKjbLBRXur7cHaAVBtja2Dd32")//(helper.getUser())!.uid)
+            let postRef = databaseRef.reference().child("Post").child((helper.getUser())!.uid)
             
             if listOfPosts.isEmpty {
                 postRef.observeSingleEvent(of: .value, with: { [weak weakSelf = self] (snapshot) in
@@ -196,7 +184,6 @@ class ProfileViewController: UICollectionViewController {
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
                                                                              withReuseIdentifier: "ProfileHeaderCell",
                                                                              for: indexPath) as? ProfileHeaderViewCell
-            
             headerView?.userInfo = userInfo
             return headerView!
         default:
@@ -218,8 +205,21 @@ class ProfileViewController: UICollectionViewController {
         
         cell?.post = listOfPosts[indexPath.row]
     
+        let deletionGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.deletePost(_:)))
+        cell?.addGestureRecognizer(deletionGesture)
         return cell!
     }
+    
+    public func deletePost(_ sender: UILongPressGestureRecognizer) {
+        let pointInView = sender.location(in: collectionView)
+        if let indexPath = collectionView?.indexPathForItem(at: pointInView) {
+            let post = listOfPosts.remove(at: indexPath.row) as Post
+            //post.deleteFromCloud(resultDelegate: nil)
+            collectionView?.deleteItems(at: [indexPath])
+            //collectionView?.
+        }
+    }
+    
 
     // MARK: UICollectionViewDelegate
 

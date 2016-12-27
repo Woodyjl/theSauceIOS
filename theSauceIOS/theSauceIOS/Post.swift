@@ -58,36 +58,34 @@ class Post: AnyObject {
         if image != nil {
             let storage = FIRStorage.storage()
             // Create a root reference
-            let postStorageRef = storage.reference().child("UserProfile").child(uId).child(Int(Date().timeIntervalSince1970).description)
+            let postStorageRef = storage.reference().child("Post").child(uId).child(Int(Date().timeIntervalSince1970).description)
             
-            _ = postStorageRef.put(image!, metadata: nil) { [unowned self] (metadata, error) in
+            _ = postStorageRef.put(image!, metadata: nil) { [refToSelf = self] (metadata, error) in
                 guard let metadata = metadata else {
                     // Uh-oh, an error occurred!
-                    resultDelegate?.didUploadSuceed(success: false, error: error)
+                    resultDelegate?.didUploadSuceed?(success: false, error: error)
                     return
                 }
-                resultDelegate?.didUploadSuceed(success: true, error: error)
+                resultDelegate?.didUploadSuceed?(success: true, error: error)
                 // Metadata contains file metadata such as size, content-type, and download URL.
                 let downloadURL = metadata.downloadURL()?.absoluteString
                 let imageName = metadata.name
                 
                 let databaseRef = FIRDatabase.database()
-                let key = databaseRef.reference().child(self.uId).childByAutoId().key
-                let postDatabaseRef = databaseRef.reference().child("Post").child(self.uId).child(key)
+                let key = databaseRef.reference().child(refToSelf.uId).childByAutoId().key
+                let postDatabaseRef = databaseRef.reference().child("Post").child(refToSelf.uId).child(key)
                 
-                postDatabaseRef.child("uId").setValue(self.uId)
-                postDatabaseRef.child("date").setValue(self.date)
-                postDatabaseRef.child("location").setValue(self.location)
-                postDatabaseRef.child("caption").setValue(self.caption)
+                postDatabaseRef.child("uId").setValue(refToSelf.uId)
+                postDatabaseRef.child("date").setValue(refToSelf.date)
+                postDatabaseRef.child("location").setValue(refToSelf.location)
+                postDatabaseRef.child("caption").setValue(refToSelf.caption)
                 postDatabaseRef.child("name").setValue(imageName)
                 postDatabaseRef.child("postKey").setValue(key)
                 postDatabaseRef.child("imagePath").setValue(downloadURL)
                 
-                let userDataRef = databaseRef.reference().child("userProfileInfo").child(self.uId)
+                let userDataRef = databaseRef.reference().child("userProfileInfo").child(refToSelf.uId)
                 userDataRef.observeSingleEvent(of: .value, with: { snapshot in
-                    //                if let uname = snapshot.value["userName"] as? String {
-                    //                    postDatabaseRef.child("userName").setValue(uname)
-                    //                }
+                    
                     if let theData = snapshot.value as? NSDictionary  {
                         if let uname = theData["userName"] as? String {
                             postDatabaseRef.child("userName").setValue(uname)
@@ -97,7 +95,7 @@ class Post: AnyObject {
                         }
                     }
                 })
-                
+
             }
 
         } else {
@@ -112,9 +110,9 @@ class Post: AnyObject {
             let postStorageRef = storage.reference().child("UserProfile").child(uId).child(name!)
             postStorageRef.delete(completion: { [unowned self] (error) in
                 if let error = error {
-                    resultDelegate?.didDeletionSuceed(success: false, error: error)
+                    resultDelegate?.didDeletionSuceed?(success: false, error: error)
                 } else {
-                    resultDelegate?.didDeletionSuceed(success: true, error: error)
+                    resultDelegate?.didDeletionSuceed?(success: true, error: error)
                     let databaseRef = FIRDatabase.database()
                     let postDatabaseRef = databaseRef.reference().child("Post").child(self.uId).child(self.postKey!)
                     postDatabaseRef.removeValue()
@@ -122,7 +120,7 @@ class Post: AnyObject {
             })
         } else {
             let error = YourError(description: "image name and/or postKey is nil");
-            resultDelegate?.didDeletionSuceed(success: false, error: error)
+            resultDelegate?.didDeletionSuceed?(success: false, error: error)
         }
         
     }
@@ -136,7 +134,7 @@ struct YourError: Error {
     }
 }
 
-protocol PostResultDelegate {
-    func didUploadSuceed(success: Bool, error: Error?)
-    func didDeletionSuceed(success: Bool, error: Error?)
+@objc protocol PostResultDelegate {
+    @objc optional func didUploadSuceed(success: Bool, error: Error?)
+    @objc optional func didDeletionSuceed(success: Bool, error: Error?)
 }

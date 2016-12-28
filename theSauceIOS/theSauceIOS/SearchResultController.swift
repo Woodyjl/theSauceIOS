@@ -14,8 +14,15 @@ class SearchResultController: UITableViewController, UISearchBarDelegate, UISear
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var matchingItems:[MKMapItem] = []
+    var matchingItems:[MKMapItem] = [] {
+        didSet {
+            searchDisplayController?.searchResultsTableView.reloadData()
+        }
+    }
     var mapView: MKMapView? = nil
+    
+    var locationDelegate: SetLocationLabelDelegate?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,15 +31,12 @@ class SearchResultController: UITableViewController, UISearchBarDelegate, UISear
         searchBar.placeholder = "Search for places"
         //navigationItem.titleView = searchBar
         searchBar.delegate = self
-        //tableView.backgroundColor = UIColor.cyan
-        //tableView.alpha = 0
         
+        //searchDisplayController?.delegate = self
+        searchDisplayController?.searchResultsTableView.delegate = self
+        searchDisplayController?.searchResultsTableView.dataSource = self
         
-        
-//        hidesNavigationBarDuringPresentation = false
-        //searchBar.dimsBackgroundDuringPresentation = true
-//        definesPresentationContext = true
-        
+        //searchDisplayController?.searchResultsTableView.isHidden = true
         
     }
     
@@ -40,22 +44,15 @@ class SearchResultController: UITableViewController, UISearchBarDelegate, UISear
     
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("was called")
+        print("user did change searchText was called text: \(searchText)")
         updateSearchResultsForSearchController()
     }
     
-//    func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String!) -> Bool {
-//        self.filterContetnForSearchText(searchString, scope: "Title")
-//        return true
-//        
-//    }
-//    
-//    func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchScope searchOption: Int) -> Bool {
-//        self.filterContetnForSearchText(self.searchDisplayController!.searchBar.text, scope: "Title")
-//        
-//        return true
-//        
-//    }
+    func searchDisplayController(_ controller: UISearchDisplayController, shouldReloadTableForSearch searchString: String!) -> Bool {
+        print("Search Display Controller shouldreload table search text: \(searchString)")
+        return true
+        
+    }
     
     @IBAction func dismissSelf(_ sender: UIBarButtonItem) {
         //performSegue(withIdentifier: "goBack", sender: self)
@@ -67,7 +64,8 @@ class SearchResultController: UITableViewController, UISearchBarDelegate, UISear
     
     func updateSearchResultsForSearchController() {
         guard let mapView = mapView,
-            let searchBarText = searchBar.text else { return }
+            let searchBarText = searchBar.text else { self.matchingItems.removeAll(); return }
+        print("searchBar text: \(searchBarText)")
         let request = MKLocalSearchRequest()
         request.naturalLanguageQuery = searchBarText
         request.region = mapView.region
@@ -77,8 +75,10 @@ class SearchResultController: UITableViewController, UISearchBarDelegate, UISear
                 return
             }
             
-            self.matchingItems = response.mapItems
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                //print(response.mapItems)
+                self.matchingItems = response.mapItems
+            }
         }
     }
     
@@ -125,54 +125,31 @@ class SearchResultController: UITableViewController, UISearchBarDelegate, UISear
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        print(tableView)
-        //let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-        // Configure the cell...
-
+        //let cell = self.tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath)
+        //print(tableView == self.tableView)
+        var cell: UITableViewCell? = nil
+        if (tableView == self.searchDisplayController?.searchResultsTableView) {
+            cell = self.tableView.dequeueReusableCell(withIdentifier: "LocationCell");
+        } else {
+            cell = self.tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath)
+        }
         let selectedItem = matchingItems[indexPath.row].placemark
-        cell.textLabel?.text = selectedItem.name
-        cell.detailTextLabel?.text = parseAddress(selectedItem: selectedItem)
+        cell?.textLabel?.text = selectedItem.name
+        cell?.detailTextLabel?.text = parseAddress(selectedItem: selectedItem)
         
        
-        return cell
+        return cell!
     }
  
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(matchingItems[indexPath.row])
+        let selectedItem = matchingItems[indexPath.row].placemark
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+        locationDelegate?.location = selectedItem.name!
+        locationDelegate?.location2 = parseAddress(selectedItem: selectedItem)
+        
+        navigationController?.dismiss(animated: true, completion: nil)
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     /*
     // MARK: - Navigation

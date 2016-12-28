@@ -9,16 +9,26 @@
 import UIKit
 import MapKit
 
-class PostCreatorController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, PostResultDelegate {
+class PostCreatorController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, PostResultDelegate, SetLocationLabelDelegate {
     
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var captionTextView: UITextView!
-    
-    
+    @IBOutlet weak var locationLabel2: UILabel!
+    var location: String? {
+        didSet {
+            locationLabel?.text = location
+        }
+    }
+    var location2: String? {
+        didSet {
+            locationLabel2?.text = location2
+        }
+    }
     var locationManager = CLLocationManager()
     let mapView = MKMapView()
     var userId: String?
+    var uploadInprogress = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,24 +53,28 @@ class PostCreatorController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     func post(_ sender: UIBarButtonItem) {
-        if let userId = self.userId {
-            if let image = imageView.image {
-                let date = Date()
-                let formatter = DateFormatter()
-                // Format for date
-                formatter.dateFormat = "MM/dd/yyyy"
-                let result = formatter.string(from: date)
-                
-                let imageData = UIImageJPEGRepresentation(image, 1.0)!
-                let post = Post(userId: userId, dateTaken: result, location: locationLabel.text!, caption: captionTextView.text, image: imageData)
-                do {
-                   try post.uploadToCloud(resultDelegate: self)
-                } catch let ex {
-                    print("----------------------------------------------------------------------------------")
-                    print(ex.localizedDescription)
-                    print("----------------------------------------------------------------------------------")
+        if !uploadInprogress {
+            if let userId = self.userId {
+                if let image = imageView.image {
+                    let date = Date()
+                    let formatter = DateFormatter()
+                    // Format for date
+                    formatter.dateFormat = "MM/dd/yyyy"
+                    let result = formatter.string(from: date)
+                    
+                    let imageData = UIImageJPEGRepresentation(image, 1.0)!
+                    let post = Post(userId: userId, dateTaken: result, location: locationLabel.text!, caption: captionTextView.text, image: imageData)
+                    do {
+                        try post.uploadToCloud(resultDelegate: self)
+                        uploadInprogress = true
+                    } catch let ex {
+                        print("----------------------------------------------------------------------------------")
+                        print(ex.localizedDescription)
+                        print("----------------------------------------------------------------------------------")
+                    }
                 }
             }
+
         }
     }
     
@@ -69,6 +83,7 @@ class PostCreatorController: UIViewController, UIImagePickerControllerDelegate, 
         if success {
             self.navigationController?.popToRootViewController(animated: true)
         }
+        uploadInprogress = false
         print(success)
         print(error?.localizedDescription)
         print("----------------------------------------------------------------------------------")
@@ -80,6 +95,8 @@ class PostCreatorController: UIViewController, UIImagePickerControllerDelegate, 
         let controller = storyboard.instantiateViewController(withIdentifier: "SearchResultControllerNav") as! UINavigationController
         let searchCon = controller.getRoot() as? SearchResultController
         searchCon?.mapView = mapView
+        weak var weakSelf = self
+        searchCon?.locationDelegate = weakSelf
         present(controller, animated: true, completion: nil)
     }
     
@@ -128,7 +145,6 @@ class PostCreatorController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     func alertControllerBackgroundTapped(){
-        print("in this biiiich")
         self.presentedViewController?.dismiss(animated: true, completion: nil)
     }
     
@@ -179,10 +195,33 @@ extension PostCreatorController : CLLocationManagerDelegate {
             let span = MKCoordinateSpanMake(0.05, 0.05)
             let region = MKCoordinateRegion(center: location.coordinate, span: span)
             mapView.setRegion(region, animated: false)
+            let geocoder = CLGeocoder()
+            geocoder.reverseGeocodeLocation(location) {
+                (placemarks, error) -> Void in
+                if let placemarks = placemarks {
+                    if placemarks.count > 0 {
+                        let placemark = placemarks[0]
+                        print(placemark.addressDictionary)
+                        self.location = placemark.name!
+                        do {
+                            let loc = try (placemark.addressDictionary!["City"] as? String)! + ", " + (placemark.addressDictionary!["Country"] as? String)!
+                            self.location2 = loc
+                        } catch _ {
+                            self.location2 = nil
+                        }
+                        
+                    }
+                }
+            }
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: NSError) {
         print("error:: (error)")
     }
+}
+
+protocol SetLocationLabelDelegate {
+    var location: String? {get set}
+    var location2: String? {get set}
 }

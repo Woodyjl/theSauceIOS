@@ -103,16 +103,16 @@ class Post: AnyObject {
         }
     }
     
-    public func deleteFromCloud(resultDelegate: PostResultDelegate?) {
+    public func deleteFromCloud(resultDelegate: PostResultDelegate?, with info: Any?) {
         if name != nil && postKey != nil {
             let storage = FIRStorage.storage()
             // Create a root reference
-            let postStorageRef = storage.reference().child("UserProfile").child(uId).child(name!)
+            let postStorageRef = storage.reference().child("Post").child(uId).child(name!)
             postStorageRef.delete(completion: { [unowned self] (error) in
                 if let error = error {
-                    resultDelegate?.didDeletionSuceed?(success: false, error: error)
+                    resultDelegate?.didDeletionSuceed?(success: false, error: error, info: info)
                 } else {
-                    resultDelegate?.didDeletionSuceed?(success: true, error: error)
+                    resultDelegate?.didDeletionSuceed?(success: true, error: error, info: info)
                     let databaseRef = FIRDatabase.database()
                     let postDatabaseRef = databaseRef.reference().child("Post").child(self.uId).child(self.postKey!)
                     postDatabaseRef.removeValue()
@@ -120,7 +120,7 @@ class Post: AnyObject {
             })
         } else {
             let error = YourError(description: "image name and/or postKey is nil");
-            resultDelegate?.didDeletionSuceed?(success: false, error: error)
+            resultDelegate?.didDeletionSuceed?(success: false, error: error, info: info)
         }
         
     }
@@ -136,5 +136,5 @@ struct YourError: Error {
 
 @objc protocol PostResultDelegate {
     @objc optional func didUploadSuceed(success: Bool, error: Error?)
-    @objc optional func didDeletionSuceed(success: Bool, error: Error?)
+    @objc optional func didDeletionSuceed(success: Bool, error: Error?, info: Any?)
 }

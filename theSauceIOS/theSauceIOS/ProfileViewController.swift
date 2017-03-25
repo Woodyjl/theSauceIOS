@@ -10,13 +10,15 @@ import UIKit
 import FirebaseDatabase
 import FirebaseAuth
 
-class ProfileViewController: UICollectionViewController {
+class ProfileViewController: UICollectionViewController, PostResultDelegate {
     
     var listOfPosts = Array<Post>() {
         didSet {
             self.collectionView?.reloadData()
         }
     }
+    
+    var recentlyDeleted: Post?
     
     var userInfo: NSMutableDictionary? {
         didSet {
@@ -36,7 +38,7 @@ class ProfileViewController: UICollectionViewController {
                 }
     }
     
-        override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
@@ -50,9 +52,32 @@ class ProfileViewController: UICollectionViewController {
         let logoutButton = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(ProfileViewController.logout))
         self.navigationItem.rightBarButtonItem = logoutButton
         
+        let refreshButton = UIBarButtonItem(title: "refresh", style: .plain, target: self, action: #selector(self.fetchlatestPost))
+        self.navigationItem.leftBarButtonItem = refreshButton
+        
         fetchUserInfo()
+        
+        let tabBarFrame = tabBarController!.tabBar.frame
+        let frame = CGRect(x: tabBarFrame.minX + 30, y: tabBarFrame.minY
+            - tabBarFrame.height, width: tabBarFrame.width - (2 * 30), height: tabBarFrame.height - 10)
+        
+        let message = SharedData.notificationBubble(text: "Hey there!!!", with: frame)
+        message.alpha = 0
+        //tabBarController?.view.addSubview(message)
+        navigationController!.view.addSubview(message)
+        UIView.animate(withDuration: 0.9, animations: {
+            message.alpha = 1
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
+                UIView.animate(withDuration: 0.9, animations: {
+                    message.alpha = 0
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: { 
+                        message.removeFromSuperview()
+                    })
+                })
+            })
+        })
     }
-    
+
     private func fetchUserInfo() {
         
         if let helper = self.helper {
@@ -73,7 +98,7 @@ class ProfileViewController: UICollectionViewController {
     }
     
     //"8dKIKjbLBRXur7cHaAVBtja2Dd32")
-    private func fetchlatestPost() {
+    @objc private func fetchlatestPost() {
         
         if let helper = self.helper {
             let databaseRef = FIRDatabase.database()
@@ -169,7 +194,6 @@ class ProfileViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
@@ -179,6 +203,8 @@ class ProfileViewController: UICollectionViewController {
         
         switch kind {
         
+        case UICollectionElementKindSectionFooter:
+            fallthrough
         case UICollectionElementKindSectionHeader:
             
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
@@ -186,6 +212,7 @@ class ProfileViewController: UICollectionViewController {
                                                                              for: indexPath) as? ProfileHeaderViewCell
             headerView?.userInfo = userInfo
             return headerView!
+            
         default:
             
             assert(false, "Unexpected element kind")
@@ -194,8 +221,8 @@ class ProfileViewController: UICollectionViewController {
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return listOfPosts.count
+        print(listOfPosts.count)
+        return self.listOfPosts.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -213,21 +240,49 @@ class ProfileViewController: UICollectionViewController {
     public func deletePost(_ sender: UILongPressGestureRecognizer) {
         let pointInView = sender.location(in: collectionView)
         if let indexPath = collectionView?.indexPathForItem(at: pointInView) {
-            let post = listOfPosts.remove(at: indexPath.row) as Post
-            //post.deleteFromCloud(resultDelegate: nil)
-            collectionView?.deleteItems(at: [indexPath])
-            //collectionView?.
+            print(listOfPosts.count)
+            print(collectionView?.numberOfItems(inSection: indexPath.section))
+            recentlyDeleted = listOfPosts.remove(at: indexPath.row) as Post
+            print(listOfPosts.count)
+            print(collectionView?.numberOfItems(inSection: indexPath.section))
+            
+            //collectionView?.deleteItems(at: [indexPath])
+
+            recentlyDeleted!.deleteFromCloud(resultDelegate: self, with: indexPath)
+            print(listOfPosts.count)
         }
     }
     
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
+    func didDeletionSuceed(success: Bool, error: Error?, info: Any?) {
+        if !success {
+            if let indexPath = info as? IndexPath {
+                let tabBarFrame = tabBarController!.tabBar.frame
+                let frame = CGRect(x: tabBarFrame.minX + 30, y: tabBarFrame.minY
+                    - tabBarFrame.height, width: tabBarFrame.width - (2 * 30), height: tabBarFrame.height - 10)
+                
+                let message = SharedData.notificationBubble(text: "Deletion fail", with: frame)
+                message.alpha = 0
+                //tabBarController?.view.addSubview(message)
+                navigationController!.view.addSubview(message)
+                UIView.animate(withDuration: 0.9, animations: {
+                    message.alpha = 1
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
+                        UIView.animate(withDuration: 0.9, animations: {
+                            message.alpha = 0
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
+                                message.removeFromSuperview()
+                            })
+                        })
+                    })
+                })
+                
+                print(error?.localizedDescription)
+                
+            listOfPosts.insert(recentlyDeleted!, at: indexPath.row)
+            }
+        } else {
+            
+        }
     }
-    */
-
+    
 }

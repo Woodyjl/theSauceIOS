@@ -11,16 +11,16 @@
 		D6702A71B328C226E6752D29 /* Pods_theSauceIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BECD8AB9D46AA967E2F0DE96 /* Pods_theSauceIOS.framework */; };
 		EC0C4AD01E0CD17B00DF3D4B /* SearchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0C4ACF1E0CD17B00DF3D4B /* SearchResultController.swift */; };
 		EC0C4AD21E0DF6C400DF3D4B /* ProfileGalleryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0C4AD11E0DF6C400DF3D4B /* ProfileGalleryViewCell.swift */; };
-		EC15F1171E06DA39001315B1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC15F1161E06DA39001315B1 /* GoogleService-Info.plist */; };
 		EC2543211E12DFB400D2FC8D /* SharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2543201E12DFB400D2FC8D /* SharedData.swift */; };
-		EC474E1B1E07098500B38ADD /* FLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC474E1A1E07098500B38ADD /* FLoginViewController.swift */; };
-		EC474E1D1E07098D00B38ADD /* FSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC474E1C1E07098D00B38ADD /* FSignUpViewController.swift */; };
+		EC2EAAD71E22C35C00C0428D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC2EAAD61E22C35C00C0428D /* GoogleService-Info.plist */; };
 		EC474E201E072CC000B38ADD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC474E1F1E072CC000B38ADD /* HomeViewController.swift */; };
 		EC474E221E07992E00B38ADD /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC474E211E07992E00B38ADD /* NewsFeedViewController.swift */; };
 		EC474E241E08241E00B38ADD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC474E231E08241E00B38ADD /* ProfileViewController.swift */; };
 		EC474E261E08456B00B38ADD /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC474E251E08456B00B38ADD /* Post.swift */; };
 		EC474E281E0A7DAB00B38ADD /* NewsFeedPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC474E271E0A7DAB00B38ADD /* NewsFeedPostCell.swift */; };
 		ECAA51D51E1056C5005168D9 /* PostCreatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAA51D41E1056C5005168D9 /* PostCreatorController.swift */; };
+		ECBC0B031E1D31DD007B9955 /* FLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBC0B011E1D31DD007B9955 /* FLoginViewController.swift */; };
+		ECBC0B041E1D31DD007B9955 /* FSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBC0B021E1D31DD007B9955 /* FSignUpViewController.swift */; };
 		ECD4DB6D1E06CAFA00BBFF99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD4DB6C1E06CAFA00BBFF99 /* AppDelegate.swift */; };
 		ECD4DB721E06CAFA00BBFF99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECD4DB701E06CAFA00BBFF99 /* Main.storyboard */; };
 		ECD4DB741E06CAFA00BBFF99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECD4DB731E06CAFA00BBFF99 /* Assets.xcassets */; };
@@ -59,10 +59,8 @@
 		E0660F51B91EAE00B06806A5 /* Pods-theSauceIOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theSauceIOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-theSauceIOSTests/Pods-theSauceIOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EC0C4ACF1E0CD17B00DF3D4B /* SearchResultController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultController.swift; sourceTree = "<group>"; };
 		EC0C4AD11E0DF6C400DF3D4B /* ProfileGalleryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileGalleryViewCell.swift; sourceTree = "<group>"; };
-		EC15F1161E06DA39001315B1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EC2543201E12DFB400D2FC8D /* SharedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedData.swift; sourceTree = "<group>"; };
-		EC474E1A1E07098500B38ADD /* FLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FLoginViewController.swift; path = ../../../ChubbyHubby/ChubbyHubbyPractice/ChubbyHubbyPractice/FLoginViewController.swift; sourceTree = "<group>"; };
-		EC474E1C1E07098D00B38ADD /* FSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FSignUpViewController.swift; path = ../../../ChubbyHubby/ChubbyHubbyPractice/ChubbyHubbyPractice/FSignUpViewController.swift; sourceTree = "<group>"; };
+		EC2EAAD61E22C35C00C0428D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EC474E1E1E07244900B38ADD /* theSauceIOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = theSauceIOS.entitlements; sourceTree = "<group>"; };
 		EC474E1F1E072CC000B38ADD /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		EC474E211E07992E00B38ADD /* NewsFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +68,8 @@
 		EC474E251E08456B00B38ADD /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		EC474E271E0A7DAB00B38ADD /* NewsFeedPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedPostCell.swift; sourceTree = "<group>"; };
 		ECAA51D41E1056C5005168D9 /* PostCreatorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCreatorController.swift; sourceTree = "<group>"; };
+		ECBC0B011E1D31DD007B9955 /* FLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FLoginViewController.swift; sourceTree = "<group>"; };
+		ECBC0B021E1D31DD007B9955 /* FSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSignUpViewController.swift; sourceTree = "<group>"; };
 		ECD4DB691E06CAFA00BBFF99 /* theSauceIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = theSauceIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECD4DB6C1E06CAFA00BBFF99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECD4DB711E06CAFA00BBFF99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -165,10 +165,10 @@
 				ECD4DB701E06CAFA00BBFF99 /* Main.storyboard */,
 				ECD4DB731E06CAFA00BBFF99 /* Assets.xcassets */,
 				ECD4DB751E06CAFA00BBFF99 /* LaunchScreen.storyboard */,
-				EC474E1C1E07098D00B38ADD /* FSignUpViewController.swift */,
-				EC474E1A1E07098500B38ADD /* FLoginViewController.swift */,
+				ECBC0B011E1D31DD007B9955 /* FLoginViewController.swift */,
+				ECBC0B021E1D31DD007B9955 /* FSignUpViewController.swift */,
 				ECD4DB781E06CAFA00BBFF99 /* Info.plist */,
-				EC15F1161E06DA39001315B1 /* GoogleService-Info.plist */,
+				EC2EAAD61E22C35C00C0428D /* GoogleService-Info.plist */,
 				EC474E251E08456B00B38ADD /* Post.swift */,
 				EC474E1F1E072CC000B38ADD /* HomeViewController.swift */,
 				EC474E211E07992E00B38ADD /* NewsFeedViewController.swift */,
@@ -325,7 +325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECD4DB771E06CAFA00BBFF99 /* LaunchScreen.storyboard in Resources */,
-				EC15F1171E06DA39001315B1 /* GoogleService-Info.plist in Resources */,
+				EC2EAAD71E22C35C00C0428D /* GoogleService-Info.plist in Resources */,
 				ECD4DB741E06CAFA00BBFF99 /* Assets.xcassets in Resources */,
 				ECD4DB721E06CAFA00BBFF99 /* Main.storyboard in Resources */,
 			);
@@ -494,14 +494,14 @@
 				EC474E281E0A7DAB00B38ADD /* NewsFeedPostCell.swift in Sources */,
 				EC0C4AD21E0DF6C400DF3D4B /* ProfileGalleryViewCell.swift in Sources */,
 				EC474E241E08241E00B38ADD /* ProfileViewController.swift in Sources */,
-				EC474E1B1E07098500B38ADD /* FLoginViewController.swift in Sources */,
-				EC474E1D1E07098D00B38ADD /* FSignUpViewController.swift in Sources */,
 				ECD4DB6D1E06CAFA00BBFF99 /* AppDelegate.swift in Sources */,
 				EC474E201E072CC000B38ADD /* HomeViewController.swift in Sources */,
 				EC474E261E08456B00B38ADD /* Post.swift in Sources */,
 				EC0C4AD01E0CD17B00DF3D4B /* SearchResultController.swift in Sources */,
 				ECAA51D51E1056C5005168D9 /* PostCreatorController.swift in Sources */,
 				EC474E221E07992E00B38ADD /* NewsFeedViewController.swift in Sources */,
+				ECBC0B031E1D31DD007B9955 /* FLoginViewController.swift in Sources */,
+				ECBC0B041E1D31DD007B9955 /* FSignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

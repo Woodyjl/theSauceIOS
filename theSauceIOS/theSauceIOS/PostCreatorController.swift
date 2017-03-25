@@ -82,6 +82,27 @@ class PostCreatorController: UIViewController, UIImagePickerControllerDelegate, 
         print("----------------------------------------------------------------------------------")
         if success {
             self.navigationController?.popToRootViewController(animated: true)
+            
+        } else {
+            let tabBarFrame = tabBarController!.tabBar.frame
+            let frame = CGRect(x: tabBarFrame.minX + 30, y: tabBarFrame.minY
+                - tabBarFrame.height, width: tabBarFrame.width - (2 * 30), height: tabBarFrame.height - 10)
+            
+            let message = SharedData.notificationBubble(text: "Upload failed", with: frame)
+            message.alpha = 0
+            //tabBarController?.view.addSubview(message)
+            navigationController!.view.addSubview(message)
+            UIView.animate(withDuration: 0.9, animations: {
+                message.alpha = 1
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
+                    UIView.animate(withDuration: 0.9, animations: {
+                        message.alpha = 0
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
+                            message.removeFromSuperview()
+                        })
+                    })
+                })
+            })
         }
         uploadInprogress = false
         print(success)

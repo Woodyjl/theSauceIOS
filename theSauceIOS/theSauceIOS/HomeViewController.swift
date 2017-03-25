@@ -23,6 +23,8 @@ class HomeViewController: UITabBarController, homeVCAidDelegate {
         let navCon = self.viewControllers?[0] as? UINavigationController
         let destinationVC = navCon?.getRoot() as? NewsFeedViewController
         destinationVC?.helper = self
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

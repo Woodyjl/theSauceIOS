@@ -92,6 +92,7 @@ class NewsFeedPostCell: UITableViewCell {
                         weakSelf?.loadview.isHidden = true
                         weakSelf?.spinner.stopAnimating()
                         if weakSelf?.previouslyRequestedPostImage == post.name {
+                            print(image)
                             weakSelf?.postImage?.image = image
                         }
                     }

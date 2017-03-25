@@ -45,6 +45,9 @@ class NewsFeedViewController: UITableViewController {
         swipeGesture.direction = UISwipeGestureRecognizerDirection.left
         tableView.addGestureRecognizer(swipeGesture)
         updateFeed()
+        
+        let refreshButton = UIBarButtonItem(title: "refresh", style: .plain, target: self, action: #selector(self.updateFeed))
+        self.navigationItem.rightBarButtonItem = refreshButton
     }
     
     override func viewWillAppear(_ animated: Bool) {
